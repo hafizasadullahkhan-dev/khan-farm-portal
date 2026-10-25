@@ -189,3 +189,22 @@ footer {
         width: 100%;
     }
 }
+
+/* Lesson 11: Delete Feedback Button */
+#feedback-list .delete-feedback {
+    background-color: #b42318;
+    color: #ffffff;
+    padding: 9px 14px;
+    margin-top: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#feedback-list .delete-feedback:hover {
+    background-color: #8f1d14;
+}
+
+#feedback-list .delete-feedback:focus-visible {
+    outline: 3px solid #b42318;
+    outline-offset: 3px;
+}
