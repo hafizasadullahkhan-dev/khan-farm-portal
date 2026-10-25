@@ -51,30 +51,36 @@
     <p>We would love to hear from you!</p>
 
     <form>
-        <label for="visitor-name">Your Name</label>
-        <input
-            type="text"
-            id="visitor-name"
-            placeholder="Enter your name"
-            required
-        >
+        
+<label for="visitor-name">Your Name</label>
+<input
+    type="text"
+    id="visitor-name"
+    name="name"
+    placeholder="Enter your name"
+    required
+    minlength="2"
+    maxlength="50"
+>
 
-        <label for="rating">Your Rating</label>
-        <select id="rating" required>
-            <option value="">Choose a rating</option>
-            <option value="5">5 - Excellent</option>
-            <option value="4">4 - Very Good</option>
-            <option value="3">3 - Good</option>
-            <option value="2">2 - Fair</option>
-            <option value="1">1 - Poor</option>
-        </select>
 
-        <label for="message">Your Message</label>
-        <textarea
-            id="message"
-            placeholder="Write your feedback..."
-            required
-        ></textarea>
+<select id="rating" name="rating" required>
+  <option value="">Select rating</option>
+  <option value="5">5 - Excellent</option>
+  <option value="4">4 - Very Good</option>
+  <option value="3">3 - Good</option>
+  <option value="2">2 - Fair</option>
+  <option value="1">1 - Poor</option>
+</select>
+
+<textarea
+  id="message"
+  name="message"
+  placeholder="Write your feedback"
+  required
+  minlength="5"
+  maxlength="500"
+></textarea>
 
         <button type="submit">Submit Feedback</button>
     </form>
