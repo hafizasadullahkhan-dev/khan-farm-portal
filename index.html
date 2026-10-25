@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khan Farm Portal</title>
+    <link rel="stylesheet" href="style.css">
+
+<script src="script.js" defer></script>
+
+</head>
+<body>
+
+    <header>
+        <h1>🌾 KHAN FARM PORTAL</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="#feedback">Feedback</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to Khan Farm</h2>
+            <p>Fresh crops, healthy soil, a better future.</p>
+            <button>Explore Our Farm</button>
+        </section>
+
+        <section id="about">
+            <h2>About Our Farm</h2>
+            <p>We are dedicated to growing quality agricultural products.</p>
+        </section>
+
+        <section id="products">
+            <h2>Our Products</h2>
+            <p>Wheat | Rice | Fresh Vegetables</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: info@khanfarm.example</p>
+        </section>
+
+<section id="feedback">
+    <h2>Share Your Feedback</h2>
+    <p>We would love to hear from you!</p>
+
+    <form>
+        <label for="visitor-name">Your Name</label>
+        <input
+            type="text"
+            id="visitor-name"
+            placeholder="Enter your name"
+            required
+        >
+
+        <label for="rating">Your Rating</label>
+        <select id="rating" required>
+            <option value="">Choose a rating</option>
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Very Good</option>
+            <option value="3">3 - Good</option>
+            <option value="2">2 - Fair</option>
+            <option value="1">1 - Poor</option>
+        </select>
+
+        <label for="message">Your Message</label>
+        <textarea
+            id="message"
+            placeholder="Write your feedback..."
+            required
+        ></textarea>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+<div id="feedback-list" aria-live="polite"></div>
+
+</section>
+
+    </main>
+
+    <footer>
+        <p>Copyright 2026 Khan Farm Portal</p>
+    </footer>
+
+</body>
+</html>
