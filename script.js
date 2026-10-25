@@ -1,6 +1,7 @@
 
 const form = document.querySelector("#feedback form");
 const feedbackList = document.querySelector("#feedback-list");
+const feedbackCount = document.querySelector("#feedback-count");
 
 const nameInput = document.querySelector("#visitor-name");
 const ratingInput = document.querySelector("#rating");
@@ -20,23 +21,94 @@ function getFeedback() {
     }
 }
 
+
+
 function displayFeedback(feedback) {
     feedbackList.replaceChildren();
 
-    feedback.forEach(function (item) {
+    // Update the feedback count
+    feedbackCount.textContent =
+        feedback.length === 1
+            ? "1 feedback"
+            : feedback.length + " feedbacks";
+
+    // Show a message when there are no feedback cards
+    if (feedback.length === 0) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.textContent = "No feedback yet. Be the first to share!";
+        feedbackList.append(emptyMessage);
+        return;
+    }
+
+    feedback.forEach(function (item, index) {
         const card = document.createElement("article");
         const heading = document.createElement("h3");
         const ratingText = document.createElement("p");
         const messageText = document.createElement("p");
+        const deleteButton = document.createElement("button");
 
         heading.textContent = item.name;
         ratingText.textContent = "Rating: " + item.rating + "/5";
         messageText.textContent = item.message;
 
-        card.append(heading, ratingText, messageText);
+        deleteButton.textContent = "Delete Feedback";
+        deleteButton.type = "button";
+        deleteButton.dataset.index = index;
+        deleteButton.className = "delete-feedback";
+
+        card.append(
+            heading,
+            ratingText,
+            messageText,
+            deleteButton
+        );
+
         feedbackList.append(card);
     });
 }
+
+
+feedbackList.addEventListener("click", function (event) {
+    const button = event.target.closest("button.delete-feedback");
+
+    if (!button) {
+        return;
+    }
+
+    const index = Number(button.dataset.index);
+
+    if (!Number.isInteger(index) || index < 0) {
+        return;
+    }
+
+    const feedback = getFeedback();
+
+    if (index >= feedback.length) {
+        return;
+    }
+
+    const confirmed = confirm(
+        "Are you sure you want to delete this feedback?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    feedback.splice(index, 1);
+
+    try {
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(feedback)
+        );
+
+        displayFeedback(feedback);
+    } catch (error) {
+        console.error("Could not update saved feedback:", error);
+        alert("Feedback could not be deleted. Please try again.");
+    }
+});
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();

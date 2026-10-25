@@ -208,3 +208,11 @@ footer {
     outline: 3px solid #b42318;
     outline-offset: 3px;
 }
+
+/* Lesson 12: Feedback Counter */
+#feedback-count {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #174d2b;
+    text-align: center;
+}
